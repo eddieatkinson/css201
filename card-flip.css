@@ -1,0 +1,71 @@
+img{
+	max-width: 100%;
+}
+
+/*parent div*/
+.card{
+	width: 300px;
+	min-height: 100px;
+	perspective: 500px;
+	border: 2px solid red;
+}
+
+/*child inside the box*/
+.card-holder{
+	width: 300px;
+	height: 300px;
+	/*Preserve-3d tells all child elements to tell their children, "Hey, this is 3D."*/
+	transform-style: preserve-3d;
+	transition: all 1s;
+	/*The children are going to have absolute position.*/
+	position: relative;
+}
+
+/*grandchildren inside of card-holder*/
+.card-front, .card-back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*If you can't see the front, you can't see anything...*/
+	backface-visibility: hidden;
+}
+
+/*Front card needs to be rotated so that it's face-down.*/
+.card-front{
+	transform: rotateY(180deg);
+}
+
+.flip{
+	transform: rotateY(-180deg);
+	/*transform: rotateZ(-360deg);*/
+}
+
+/*Make the parent div obvious.*/
+#parent{
+	height: 200px;
+	width: 200px;
+	margin: 50px;
+	padding: 10px;
+	background-color: #DCDCDC;
+	border: 1px solid black;
+	/*Perspective gives the element's CHILDREN a 3D box to play inside of.
+	Without it, the parent is flat and all transforms will be 2D.*/
+	perspective: 200px;
+}
+
+#threeD, #threeD2, #threeD3{
+	background-color: #0F0;
+	padding: 50px;
+	border: 1px solid #F0F;
+	transform: rotateX(45deg);
+}
+
+#threeD2{
+	background-color: #FF0;
+	transform: rotateY(45deg);
+}
+
+#threeD3{
+	background-color: #00F;
+	transform: rotateZ(45deg);
+}
